@@ -46,6 +46,9 @@ void initializeIPO(PassRegistry&);
 /// Initialize all passes linked into the Instrumentation library.
 void initializeInstrumentation(PassRegistry&);
 
+/// Initialize all passes linked into the AddressInterception library.
+void initializeAddressInterception(PassRegistry&);
+
 /// Initialize all passes linked into the Analysis library.
 void initializeAnalysis(PassRegistry&);
 
@@ -165,6 +168,9 @@ void initializeGlobalsAAWrapperPassPass(PassRegistry&);
 void initializeGuardWideningLegacyPassPass(PassRegistry&);
 void initializeHotColdSplittingLegacyPassPass(PassRegistry&);
 void initializeHWAddressSanitizerPass(PassRegistry&);
+//---------------------------------------------------------------
+void initializeAddressInterceptorPass(PassRegistry&);
+//---------------------------------------------------------------
 void initializeIPCPPass(PassRegistry&);
 void initializeIPSCCPLegacyPassPass(PassRegistry&);
 void initializeIRCELegacyPassPass(PassRegistry&);

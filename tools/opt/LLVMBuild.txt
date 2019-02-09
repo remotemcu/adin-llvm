@@ -27,6 +27,7 @@ required_libraries =
  IRReader
  IPO
  Instrumentation
+ AddressInterception
  Scalar
  ObjCARC
  Passes
