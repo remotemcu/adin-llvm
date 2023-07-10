@@ -1,25 +1,27 @@
 # ADIN LLVM Fork: Memory Operation Hooking
 
+![logo](docs/logo.png)
+
 1. [Introduction](#introduction)
 2. [Usage](#usage)
 3. [How build](#how-build)
    * [Unix-like OS](#unix-like-os)
    * [Windows OS](#windows-os)
 
-## Introduction
-The **ADIN LLVM Fork** is a specialized version of the LLVM compiler infrastructure that incorporates the ADIN code transformer. This fork enables runtime interrupting technologies by allowing developers to hook memory operations, such as store and load operations, and replace them with custom hook functions. The **ADIN LLVM Fork** is particularly crucial for projects like [REMCU Library](), where it is used to hook peripheral register operations. 
+## Introduction:
+The **ADIN LLVM Fork** is a specialized version of the LLVM compiler infrastructure that incorporates the [**ADIN code transformer pass**](https://github.com/remotemcu/adin-llvm-pass). This fork enables runtime interrupting technologies by allowing developers to hook memory operations, such as store and load operations, and replace them with custom hook functions. The **ADIN LLVM Fork** is particularly crucial for projects like [**REMCU Library**](https://github.com/remotemcu/remcu) and [**REMCU Chip SDKs**](https://github.com/remotemcu/remcu-chip-sdks), where it is used to hook peripheral register operations. 
 
 
-## Usage
+## Usage:
 To utilize the memory operation hooking capabilities of the **ADIN LLVM Fork**, you can modify LLVM IR compiled code using the `opt` tool with the `-adin` flag. Here's an example to help you understand the process:
 
 Let's assume you have a simple C code file named `example.c`.
 ```c
-int b = 0;
+int var = 0;
 
 void f(){
 	*(int*)0x100 = 1;
-	b = *(int*)0x100;
+	var = *(int*)0x100;
 }
 ```
 
@@ -136,7 +138,7 @@ Follow the steps below to build your LLVM Adin Fork:
 
 3. Clone the repository using the following command:
    ```
-   git clone <repository_url>
+   git clone -b adin  --recurse-submodules <repository_url>
    ```
    Replace `<repository_url>` with the URL of your LLVM Adin Fork repository.
 
@@ -160,6 +162,8 @@ Follow the steps below to build your LLVM Adin Fork:
    ```
    Replace `<generator>` with the appropriate generator for your system. For example, on Linux, you can use `"Unix Makefiles"` for Make or `"Ninja"` for Ninja.
 
+   ![ubuntu_cmake.png](docs/ubuntu_cmake.png)
+
    **Note:** If you are using Ninja, append `-DCMAKE_BUILD_TYPE=Release` to the CMake command to build LLVM with optimizations enabled:
    ```
    cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../ -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
@@ -174,6 +178,9 @@ Follow the steps below to build your LLVM Adin Fork:
 2. Grab a cup of coffee or tea as the build process might take some time depending on your system's speed and available resources.
 
 3. Once the build is successfully completed, you can proceed to use the ADIN LLVM Adin Fork as desired. The built binaries can be found in the `build/bin` directory.
+
+![opt.PNG](docs/opt-ubuntu.png)
+
 To locate the **opt** utility, which can be used for modifying LLVM intermediate representations, follow the steps below:
 
    * Open a file explorer or command prompt.
@@ -194,7 +201,7 @@ Before proceeding with the LLVM Adin Fork build, ensure that you have the follow
 
 1. **MSBuild:** Install Microsoft Build Tools or Visual Studio 2017. You can download Visual Studio 2017 Community Edition from the official Microsoft website: [https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/install/use-command-line-parameters-to-install-visual-studio?view=vs-2017](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2017/install/use-command-line-parameters-to-install-visual-studio?view=vs-2017). Make sure to select the required these components during the installation.
 
-![start_menu.PNG](docs/start_menu.PNG)
+![start_menu.PNG](docs/vc-components.PNG)
 
 I build with next version:
 ```
@@ -214,18 +221,12 @@ Once you have installed the necessary prerequisites, follow the steps below to b
 1. **Clone the LLVM Adin Fork Repository:** Open a command prompt or Git Bash and navigate to the directory where you want to clone the LLVM Adin Fork repository. Then, run the following command to clone the repository:
 
    ```shell
-   git clone <repository_url>
-   ```
-
-   Replace `<repository_url>` with the URL of the LLVM Adin Fork repository. For example:
-
-   ```shell
-   git clone https://github.com/your-username/llvm-fork.git
+   git clone -b adin --recurse-submodules <repository_url>
    ```
 
 2.  Open "x64 Native Tools Command Prompt for Visual Studio 2017" entry to open the command prompt.
 
-	![vc-components.PNG](docs/vc-components.PNG)
+	![vc-components.PNG](docs/start_menu.PNG)
 
 3. In the command prompt window, navigate to the directory where you build the LLVM Adin Fork repository using the `cd` command. For example, if the cloned repository is located in `C:\llvm-adin` create `C:\llvm-adin-build` for building process
 
@@ -238,6 +239,8 @@ Once you have installed the necessary prerequisites, follow the steps below to b
    ```shell
    cmake -Thost=x64 C:\llvm-adin -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
    ```
+
+   ![screenshot cmd](docs/adin-cm-build.PNG)
 
    This command configures the build system for Visual Studio 2017. Adjust the generator (`-G`) argument if you are using a different version of Visual Studio.
 
@@ -256,6 +259,7 @@ To locate the **opt** utility, which can be used for modifying LLVM intermediate
 
    * Look for the `opt` executable file. The exact file extension may vary depending on your operating system (e.g., .exe for Windows).
 
+   ![screenshot cmd](docs/windows-opt-build.PNG)
 
 ---
 LLVM is open source software. You may freely distribute it under the terms of
