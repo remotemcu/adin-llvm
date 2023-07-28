@@ -156,15 +156,15 @@ Follow the steps below to build your LLVM Adin Fork:
 
 3. Generate the build files using CMake:
    ```
-   cmake -G <generator> ../ -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
+   cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
    ```
    Replace `<generator>` with the appropriate generator for your system. For example, on Linux, you can use `"Unix Makefiles"` for Make or `"Ninja"` for Ninja.
 
    ![ubuntu_cmake.png](docs/ubuntu_cmake.png)
 
-   **Note:** If you are using Ninja, append `-DCMAKE_BUILD_TYPE=Release` to the CMake command to build LLVM with optimizations enabled:
+   **Note:** If you are using Ninja:
    ```
-   cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../ -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
+   cmake -G Ninja .. -DCMAKE_BUILD_TYPE=MinSizeRel -DLLVM_BUILD_RUNTIME=Off -DLLVM_INCLUDE_TESTS=Off -DLLVM_INCLUDE_EXAMPLES=Off -DLLVM_ENABLE_BACKTRACES=Off -DLLVM_TARGETS_TO_BUILD="host" -DLLVM_ENABLE_OCAMLDOC=Off -DLLVM_BUILD_UTILS=Off -DLLVM_BUILD_DOCS=Off
    ```
 
 ##### Step 3: Build LLVM
