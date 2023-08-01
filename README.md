@@ -138,7 +138,7 @@ Follow the steps below to build your LLVM Adin Fork:
 
 3. Clone the repository using the following command:
    ```
-   git clone -b adin  --recurse-submodules https://github.com/remotemcu/adin-llvm
+   git clone --recurse-submodules https://github.com/remotemcu/adin-llvm
    ```
 
 ##### Step 2: Configure the Build
@@ -219,7 +219,7 @@ Once you have installed the necessary prerequisites, follow the steps below to b
 1. **Clone the LLVM Adin Fork Repository:** Open a command prompt or Git Bash and navigate to the directory where you want to clone the LLVM Adin Fork repository. Then, run the following command to clone the repository:
 
    ```shell
-   git clone -b adin --recurse-submodules https://github.com/remotemcu/adin-llvm
+   git clone --recurse-submodules https://github.com/remotemcu/adin-llvm
    ```
 
 2.  Open "x64 Native Tools Command Prompt for Visual Studio 2017" entry to open the command prompt.
