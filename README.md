@@ -1,5 +1,8 @@
 # ADIN LLVM Fork: Memory Operation Hooking
 
+[![Ubuntu](https://github.com/remotemcu/adin-llvm/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/remotemcu/adin-llvm/actions/workflows/ubuntu.yml)
+[![Macos](https://github.com/remotemcu/adin-llvm/actions/workflows/macos.yml/badge.svg)](https://github.com/remotemcu/adin-llvm/actions/workflows/macos.yml)
+
 ![logo](docs/logo.png)
 
 1. [Introduction](#introduction)
