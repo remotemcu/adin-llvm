@@ -2,6 +2,7 @@
 
 [![Ubuntu](https://github.com/remotemcu/adin-llvm/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/remotemcu/adin-llvm/actions/workflows/ubuntu.yml)
 [![Macos](https://github.com/remotemcu/adin-llvm/actions/workflows/macos.yml/badge.svg)](https://github.com/remotemcu/adin-llvm/actions/workflows/macos.yml)
+![GitHub all releases](https://img.shields.io/github/downloads/remotemcu/adin-llvm/total)
 
 ![logo](docs/logo.png)
 
