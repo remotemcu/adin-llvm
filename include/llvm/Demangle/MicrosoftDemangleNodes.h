@@ -4,6 +4,8 @@
 #include "llvm/Demangle/Compiler.h"
 #include "llvm/Demangle/StringView.h"
 #include <array>
+#include <string>
+#include <cstdint>
 
 class OutputStream;
 
